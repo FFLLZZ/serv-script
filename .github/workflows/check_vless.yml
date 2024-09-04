@@ -2,7 +2,7 @@ name: 恢复vless服务并发送Telegram消息
 
 on:
   schedule:
-    - cron: '*/56 * * * *'  # 每56分钟执行一次
+    - cron: '30 5,17 * * *'  # 每天 5:30 和 17:30各执行一次
   workflow_dispatch:
 
 jobs:
