@@ -78,7 +78,7 @@ deploy_vless() {
     npm install
     # 启动vless项目
     ~/.npm-global/bin/pm2 start ~/domains/$USER.serv00.net/vless/app.js --name vless
-    # 保存pm2进程状态
+    保存pm2进程状态
     ~/.npm-global/bin/pm2 save
     # ANSI颜色码
     output_yi_xiu
@@ -89,12 +89,6 @@ deploy_vless() {
     echo -e "VLESS节点信息: ${GREEN}vless://${uuid}@$USER.serv00.net:${port}?flow=&security=none&encryption=none&type=ws&host=$USER.serv00.net&path=/&sni=&fp=&pbk=&sid=#$USER.serv00.vless${NC}"
 }
 
-# 启动pm2 vless进程
-start_pm2_vless_process() {
-    echo "正在启动pm2 vless进程..."
-    ~/.npm-global/bin/pm2 start ~/domains/$USER.serv00.net/vless/app.js --name vless
-    echo -e "${GREEN}pm2 vless进程已启动。${NC}"
-}
 # 检查vless的状态
 check_vless_status() {
     status=$(pm2 status vless | grep -w 'vless' | awk '{print $18}')
@@ -106,30 +100,7 @@ check_vless_status() {
         echo -e "${GREEN}vless进程已重启。${NC}"
     fi
 }
-# 检查是否有pm2 vless快照
-check_pm2_vless_snapshot() {
-    if [[ -f ~/.pm2/dump.pm2 ]]; then
-        echo "检测到pm2 vless快照，正在恢复..."
-        pm2 resurrect
-        echo -e "${GREEN}pm2 vless快照已恢复。${NC}"
-        check_vless_status
-    else
-        echo "未检测到pm2 vless快照，启动vless进程..."
-        start_pm2_vless_process
-    fi
-}
 
-
-# 检查pm2 vless的状态
-check_pm2_vless_status() {
-    pm2 describe vless &>/dev/null
-    if [[ $? -eq 0 ]]; then
-        check_vless_status
-    else
-        echo "未找到pm2 vless进程，检查是否有快照..."
-        check_pm2_vless_snapshot
-    fi
-}
 # 主函数
 main() {
     local port=3000  # Default port
@@ -163,12 +134,6 @@ main() {
 
         else
             echo -e "config.json 文件不存在或格式错误。"
-        fi
-        echo "开始检查pm2 vless进程..."
-        check_pm2_vless_status
-    fi
-
-
 }
 
 # 执行主函数
