@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Function to check if pm2 is installed
+Function to check if pm2 is installed
 check_pm2_installed() {
     if command -v pm2 &>/dev/null; then
         return 0  # pm2已安装
@@ -10,7 +10,7 @@ check_pm2_installed() {
 }
 
 
-# Function to install pm2
+Function to install pm2
 install_pm2() {
     if ! check_pm2_installed; then
         curl -s https://raw.githubusercontent.com/k0baya/alist_repl/main/serv00/install-pm2.sh | bash
@@ -55,12 +55,9 @@ echo -e "请执行以下脚本:${GREEN}cd ~/domains/$USER.serv00.net/vless && ./
 
 # Main function
 main() {
-    echo "正在安装pm2..."
-    install_pm2
     echo "正在部署vless到指定目录..."
     deploy_vless
 }
 
 # 执行主函数
 main "$@"
-
