@@ -4,8 +4,8 @@
 GREEN='\033[0;32m'
 NC='\033[0m'  # 恢复默认颜色
 
-# 输出绿色的 "YI XIU"
-output_yi_xiu() {
+# 输出绿色的 "OK"
+output_O_K() {
     echo -e "一休YouTuBe: ${GREEN}https://www.youtube.com/@yixiu001${NC}"
     echo -e "TG技术交流群: ${GREEN}https://t.me/yxjsjl${NC}"
     echo -e "--------------------------------------------------------------------------------------------------"
@@ -65,26 +65,14 @@ deploy_vless() {
     # 安装依赖
     npm install
     # 启动vless项目
-    ~/.npm-global/bin/pm2 start ~/domains/$USER.serv00.net/vless/app.js --name vless
+    ~/domains/$USER.serv00.net/vless/app.js --name vless
     # ANSI颜色码
-    output_yi_xiu
+    output_O_K
     echo -e "端口号: ${GREEN}${port}${NC}"
     echo -e "UUID: ${GREEN}${uuid}${NC}"
     echo -e "域名: ${GREEN}$USER.serv00.net${NC}"
     echo -e "vless进程维护定时任务脚本: ${GREEN}cd ~/domains/$USER.serv00.net/vless && ./check_vless.sh${NC}"
     echo -e "VLESS节点信息: ${GREEN}vless://${uuid}@$USER.serv00.net:${port}?flow=&security=none&encryption=none&type=ws&host=$USER.serv00.net&path=/&sni=&fp=&pbk=&sid=#$USER.serv00.vless${NC}"
-}
-
-# 检查vless的状态
-check_vless_status() {
-    status=$(pm2 status vless | grep -w 'vless' | awk '{print $18}')
-    if [[ "$status" == "online" ]]; then
-        echo "vless进程正在运行。"
-    else
-        echo "vless进程未运行或已停止，正在重启..."
-        pm2 restart vless
-        echo -e "${GREEN}vless进程已重启。${NC}"
-    fi
 }
 
 # 主函数
