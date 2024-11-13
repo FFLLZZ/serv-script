@@ -38,8 +38,8 @@ except json.JSONDecodeError:
 summary_message = "serv00-hysteria2 恢复操作结果：\n"
 
 # 默认恢复命令
-default_restore_command = "PORT=10308 bash <(curl -Ls https://github.com/eooce/Sing-box/releases/download/00/2.sh)"
-default_restore_command = "PORT=46304 bash <(curl -Ls https://github.com/eooce/Sing-box/releases/download/00/2.sh)"
+default_restore_command = "PORT=10308 bash <(curl -Ls https://github.com/eooce/Sing-box/releases/download/00/2.sh),PORT=46304 bash <(curl -Ls https://github.com/eooce/Sing-box/releases/download/00/2.sh)"
+#default_restore_command = "PORT=46304 bash <(curl -Ls https://github.com/eooce/Sing-box/releases/download/00/2.sh)"
 
 # 遍历服务器列表并执行恢复操作
 for server in servers:
