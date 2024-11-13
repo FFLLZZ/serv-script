@@ -1,4 +1,4 @@
-name: 恢复vless服务并发送Telegram消息
+name: 恢复hysteria2服务并发送Telegram消息
 
 on:
   schedule:
@@ -29,5 +29,5 @@ jobs:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
-          python3 vless/recover_vless.py
+          python3 hysteria2/recover_hysteria2.py
 
