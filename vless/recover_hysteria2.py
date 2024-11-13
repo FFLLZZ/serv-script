@@ -38,7 +38,7 @@ except json.JSONDecodeError:
 summary_message = "serv00-hysteria2 恢复操作结果：\n"
 
 # 默认恢复命令
-default_restore_command = "cd ~/domains/$USER.serv00.net/vless && ./check_vless.sh"
+default_restore_command = "sshpass -p '^1q2w3E4R5T^$@' ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -tt helloolk@s5.serv00.com "curl -s https://raw.githubusercontent.com/eooce/scripts/master/containers-shell/00-hy2.sh | PORT=10308 bash)""
 
 # 遍历服务器列表并执行恢复操作
 for server in servers:
