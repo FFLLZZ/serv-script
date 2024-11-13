@@ -35,7 +35,7 @@ except json.JSONDecodeError:
     exit(1)
 
 # 初始化汇总消息
-summary_message = "serv00-vless 恢复操作结果：\n"
+summary_message = "serv00-hysteria2 恢复操作结果：\n"
 
 # 默认恢复命令
 default_restore_command = "cd ~/domains/$USER.serv00.net/vless && ./check_vless.sh"
@@ -54,9 +54,9 @@ for server in servers:
     restore_command = f"sshpass -p '{password}' ssh -o StrictHostKeyChecking=no -p {port} {username}@{host} '{cron_command}'"
     try:
         output = subprocess.check_output(restore_command, shell=True, stderr=subprocess.STDOUT)
-        summary_message += f"\n成功恢复 {host} 上的 vless 服务：\n{output.decode('utf-8')}"
+        summary_message += f"\n成功恢复 {host} 上的 hysteria2 服务：\n{output.decode('utf-8')}"
     except subprocess.CalledProcessError as e:
-        summary_message += f"\n无法恢复 {host} 上的 vless 服务：\n{e.output.decode('utf-8')}"
+        summary_message += f"\n无法恢复 {host} 上的 hysteria2 服务：\n{e.output.decode('utf-8')}"
 
 # 发送汇总消息到 Telegram
 send_telegram_message(telegram_token, telegram_chat_id, summary_message)
