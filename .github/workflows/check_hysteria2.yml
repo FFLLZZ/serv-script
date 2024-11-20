@@ -2,7 +2,7 @@ name: 恢复hysteria2服务并发送Telegram消息
 
 on:
   schedule:
-    - cron: '30 22 * * *'  # 每天 22:30执行一次
+    - cron: '30 22 * * 1'  # 每周一 22:30执行一次
   workflow_dispatch:
 
 jobs:
