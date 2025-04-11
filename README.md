@@ -36,6 +36,15 @@
            "username": "user2",
            "password": "password2"
            // 没有cron参数，使用默认命令
+       },
+       {
+           "host": "example3.com",
+           "port": 22,
+           "username": "user3",
+           "password": "password2"
+           "UUID": "97f19d62-1345-486a-b6d9-4196d9703548"
+           "SERVER_PORT": "1100"
+           // 没有cron参数，使用默认命令
        }
    ]
 
