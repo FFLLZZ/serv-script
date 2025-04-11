@@ -2,6 +2,8 @@
 
 ## 恢复 hysteria2 服务并发送 Telegram 通知
 
+##h2.sh是恢复 hysteria2 文件
+
 ### 1，服务器准备
 1. **您的服务器需要具有 SSH 连接凭据（用户名、密码或密钥）。**
   - Telegram Bot
